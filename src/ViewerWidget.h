@@ -113,60 +113,53 @@ public:
 	//	<Subclass for edges>
 	class Edge {
 	private:
-		QPoint startPoint_;  // Zaèiatoèný bod hrany
-		QPoint endPoint_;    // Koncový bod hrany
-		double slope_;       // Sklon hrany
-		double x_;           // Aktuálna x pozícia pre vyplòovanie pomocou ScanLine algoritmu
-		double w_;           // Inverzný sklon pre aktualizáciu x
+		QPoint startPoint_;
+		QPoint endPoint_;
+		double slope_;
+		double x_;
+		double w_;
 
 	public:
-		// Konštruktor prijíma zaèiatoèný a koncový bod hrany a inicializuje èlenské premenné
 		Edge() : startPoint_(QPoint(0, 0)), endPoint_(QPoint(0, 0)), slope_(0.0), x_(0.0), w_(0.0) {}
 		Edge(QPoint start, QPoint end) : startPoint_(start), endPoint_(end), x_(0.0), w_(0.0) {
 			calculateAttributes();
 		}
 
-		// Výpoèet atribútov hrany (sklon, inverzný sklon)
 		void calculateAttributes() {
 			double dx = static_cast<double>(endPoint_.x() - startPoint_.x());
 			double dy = static_cast<double>(endPoint_.y() - startPoint_.y());
 
 			if (dx == 0) {
-				slope_ = std::numeric_limits<double>::max(); // Nastavenie smernice/sklonu na maximálnu hodnotu pre double, reprezentuje vertikálny sklon
-				w_ = 0; // Pre vertikálne hrany je inverzný sklon nulový
+				slope_ = std::numeric_limits<double>::max();
+				w_ = 0;
 			}
 			else {
-				slope_ = dy / dx; // Výpoèet sklonu ako pomer zmeny y k zmene x
-				w_ = 1.0 / slope_; // Výpoèet inverzného sklonu
+				slope_ = dy / dx;
+				w_ = 1.0 / slope_;
 			}
 
 			x_ = static_cast<double>(startPoint_.x());
 
-			// y-ová súradnica zaèiatoèného bodu je vždy menšia ako y-ová súradnica koncového bodu
 			if (startPoint_.y() > endPoint_.y()) {
 				swapStartEndPoints();
-				calculateAttributes(); // Rekurzívny prepoèet atribútov, ak došlo k výmene bodov
+				calculateAttributes();
 			}
 		}
 
-		// Metóda pre výmenu zaèiatoèného a koncového bodu
 		void swapStartEndPoints() {
 			std::swap(startPoint_, endPoint_);
 		}
 
-		// Úprava koncového bodu hrany o -1 na y-ovej súradnici, použitie po naèítaní hrán
 		void adjustEndPoint() {
 			endPoint_.setY(endPoint_.y() - 1);
 		}
 
-		// Gettery pre prístup k èlenským premenným
 		QPoint startPoint() const { return startPoint_; }
 		QPoint endPoint() const { return endPoint_; }
 		double slope() const { return slope_; }
 		double x() const { return x_; }
 		double w() const { return w_; }
 
-		// Setter pre nastavenie aktuálnej x-ovej pozície
 		void setX(double x) { x_ = x; }
 	};
 
@@ -198,9 +191,7 @@ public:
 	QPoint calculateTheNearestPoint(QPoint position);
 	void moveTheNearestPoint(const QColor& color, const QColor& color2, const QPoint& offset, int curveType, int algType);
 
-//-----------------------------------------
-//		*** <<< Projekt 2 >>> ***
-//-----------------------------------------
+
 	void saveVTKCube(int sideLength);
 	void saveSphereVTK(int parallels, int meridians, double radius);
 

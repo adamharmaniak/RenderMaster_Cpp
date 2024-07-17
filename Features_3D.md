@@ -13,6 +13,9 @@ Load the surface representation of a polygonal (triangular) sphere from a VTK Po
 Display the projection of an illuminated polygonal (triangular) sphere model using Phong's illumination model.
 
 ## User-defined Settings:
+
+
+
 #### Light Source 
 Define a single point light source and its color (positioned in world view or view system).
 #### Camera Position 

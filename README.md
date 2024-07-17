@@ -1,5 +1,5 @@
 # RenderMaster_C++
-**RenderMaster** is an intuitive Qt application that allows users to render simple **2D** and **3D objects** and manipulate them with ease. Users can **rotate**, **translate**, **scale objects**, and **change their colors** effortlessly.
+**RenderMaster** is an intuitive Qt application that allows users to render simple **2D** and **3D objects** and manipulate them with ease.
 
 You can check the *functionalities* of this application described in the **"Functionalities_2D"** and **"Functionalities_3D"** files.
 

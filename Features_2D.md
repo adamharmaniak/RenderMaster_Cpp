@@ -1,7 +1,7 @@
 # Rendering Application Features 2D
 These functionalities allow for comprehensive drawing, rendering, and manipulation of *2D geometric shapes* and *curves*.
 
-![Snímka obrazovky (320)](https://github.com/user-attachments/assets/d61c4014-6c87-49a1-9413-f431a3cd731c)
+![Snímka obrazovky (321)](https://github.com/user-attachments/assets/5d23d26d-e594-497e-9ef9-092a42eb4994)
 
 ### Color Selection
 Use QColorDialog to set the global drawing color.
